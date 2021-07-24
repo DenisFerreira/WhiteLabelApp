@@ -1,0 +1,126 @@
+{
+  "project_info": {
+    "project_number": "971540006550",
+    "project_id": "white-label-app-16aa6",
+    "storage_bucket": "white-label-app-16aa6.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:971540006550:android:a6f6078aebdb76a9dbe4b7",
+        "android_client_info": {
+          "package_name": "br.com.denisferreira.whitelabelapp.bike"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "971540006550-7d7ucujmorcupd5htujbs1rd4mpcbthr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAWfSFpDNfF1TyE4ToqUK1iwrB4lwKa5Z0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "971540006550-7d7ucujmorcupd5htujbs1rd4mpcbthr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:971540006550:android:b981e7d03456810fdbe4b7",
+        "android_client_info": {
+          "package_name": "br.com.denisferreira.whitelabelapp.bike.admin"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "971540006550-7d7ucujmorcupd5htujbs1rd4mpcbthr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAWfSFpDNfF1TyE4ToqUK1iwrB4lwKa5Z0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "971540006550-7d7ucujmorcupd5htujbs1rd4mpcbthr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:971540006550:android:1497a7fd3ad293f9dbe4b7",
+        "android_client_info": {
+          "package_name": "br.com.denisferreira.whitelabelapp.car"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "971540006550-7d7ucujmorcupd5htujbs1rd4mpcbthr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAWfSFpDNfF1TyE4ToqUK1iwrB4lwKa5Z0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "971540006550-7d7ucujmorcupd5htujbs1rd4mpcbthr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:971540006550:android:8eabe35c17f647a1dbe4b7",
+        "android_client_info": {
+          "package_name": "br.com.denisferreira.whitelabelapp.car.admin"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "971540006550-7d7ucujmorcupd5htujbs1rd4mpcbthr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAWfSFpDNfF1TyE4ToqUK1iwrB4lwKa5Z0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "971540006550-7d7ucujmorcupd5htujbs1rd4mpcbthr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

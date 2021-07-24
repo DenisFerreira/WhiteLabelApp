@@ -8,7 +8,7 @@
 
     <fragment
         android:id="@+id/productsFragment"
-        android:name="br.com.douglasmotta.whitelabeltutorial.ui.products.ProductsFragment"
+        android:name="br.com.denisferreira.whitelabelapp.ui.products.ProductsFragment"
         android:label="@string/products_screen_title"
         tools:layout="@layout/fragment_products" />
 </navigation>

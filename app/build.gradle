@@ -6,13 +6,14 @@ plugins {
 
 apply plugin: 'kotlin-kapt'
 apply plugin: 'kotlin-parcelize'
+apply plugin: 'com.google.gms.google-services'
 
 android {
     compileSdkVersion 30
     buildToolsVersion "30.0.3"
 
     defaultConfig {
-        applicationId "br.com.douglasmotta.whitelabeltutorial"
+        applicationId "br.com.denisferreira.whitelabelapp"
         minSdkVersion 21
         targetSdkVersion 30
         versionCode 1
@@ -37,6 +38,33 @@ android {
     buildFeatures {
         viewBinding true
     }
+    productFlavors {
+        flavorDimensions 'product', 'side'
+        bike {
+            dimension 'product'
+            applicationIdSuffix '.bike'
+            manifestPlaceholders.appName = 'Bike'
+        }
+        car {
+            dimension 'product'
+            applicationIdSuffix '.car'
+            manifestPlaceholders.appName = 'Carro'
+
+        }
+        client {
+            dimension 'side'
+            manifestPlaceholders.appNameSuffix = ''
+
+        }
+        admin {
+            dimension 'side'
+            applicationIdSuffix '.admin'
+            manifestPlaceholders.appNameSuffix = '.Admin'
+
+
+        }
+    }
+
 }
 
 dependencies {
