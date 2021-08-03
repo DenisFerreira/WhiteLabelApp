@@ -3,16 +3,14 @@ package br.com.denisferreira.whitelabelapp.ui.products
 import android.net.Uri
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.core.widget.addTextChangedListener
-import br.com.denisferreira.whitelabelapp.R
 import br.com.denisferreira.whitelabelapp.databinding.AddProductFragmentBinding
 import br.com.denisferreira.whitelabelapp.util.CurrencyTextWatcher
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
+import com.google.android.material.textfield.TextInputLayout
 
 class AddProductFragment : BottomSheetDialogFragment () {
 
@@ -37,7 +35,26 @@ class AddProductFragment : BottomSheetDialogFragment () {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel = ViewModelProvider(this).get(AddProductViewModel::class.java)
+        observeVMEvents()
         setListener()
+    }
+
+    private fun observeVMEvents() {
+        viewModel.imageUriErrorResId.observe(viewLifecycleOwner) {
+            binding.imageProduct.setBackgroundResource(it)
+        }
+        viewModel.descriptionFieldErrorErrorResId.observe(viewLifecycleOwner) {
+            binding.inputLayoutDescription.setError(it)
+        }
+        viewModel.priceFieldErrorResId.observe(viewLifecycleOwner) {
+            binding.inputLayoutPrice.setError(it)
+        }
+    }
+
+    private fun TextInputLayout.setError(stringResId: Int?) {
+        error = if(stringResId != null) {
+            getString(stringResId)
+        }else null
     }
 
     private fun setListener() {
@@ -47,6 +64,8 @@ class AddProductFragment : BottomSheetDialogFragment () {
         binding.buttonAddProduct.setOnClickListener {
             val description = binding.inputDescription.text.toString()
             val price = binding.inputPrice.text.toString()
+
+            viewModel.createProduct(description, price, imageUri)
         }
 
         binding.inputPrice.run {
