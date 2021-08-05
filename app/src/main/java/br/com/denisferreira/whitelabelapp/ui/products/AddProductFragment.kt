@@ -1,29 +1,34 @@
 package br.com.denisferreira.whitelabelapp.ui.products
 
 import android.net.Uri
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.ViewModelProvider
 import br.com.denisferreira.whitelabelapp.databinding.AddProductFragmentBinding
 import br.com.denisferreira.whitelabelapp.util.CurrencyTextWatcher
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.google.android.material.textfield.TextInputLayout
+import dagger.hilt.android.AndroidEntryPoint
 
-class AddProductFragment : BottomSheetDialogFragment () {
+@AndroidEntryPoint
+class AddProductFragment : BottomSheetDialogFragment() {
 
-    private lateinit var viewModel: AddProductViewModel
+    private val viewModel: AddProductViewModel by viewModels()
     private lateinit var binding: AddProductFragmentBinding
 
-    private var imageUri : Uri? = null
+    private var imageUri: Uri? = null
 
-    private val getContent = registerForActivityResult(ActivityResultContracts.GetContent()) {  uri ->
-        imageUri = uri
-        binding.imageProduct.setImageURI(imageUri)
+    private val getContent =
+        registerForActivityResult(ActivityResultContracts.GetContent()) { uri ->
+            imageUri = uri
+            binding.imageProduct.setImageURI(imageUri)
 
-    }
+        }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -34,7 +39,6 @@ class AddProductFragment : BottomSheetDialogFragment () {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel = ViewModelProvider(this).get(AddProductViewModel::class.java)
         observeVMEvents()
         setListener()
     }
@@ -52,9 +56,9 @@ class AddProductFragment : BottomSheetDialogFragment () {
     }
 
     private fun TextInputLayout.setError(stringResId: Int?) {
-        error = if(stringResId != null) {
+        error = if (stringResId != null) {
             getString(stringResId)
-        }else null
+        } else null
     }
 
     private fun setListener() {
