@@ -1,7 +1,7 @@
 package br.com.denisferreira.whitelabelapp.domain.usecase
 
 import android.net.Uri
-import br.com.denisferreira.whitelabelapp.data.ProductRepository
+import br.com.denisferreira.whitelabelapp.domain.model.ProductRepository
 import javax.inject.Inject
 
 class UploadProductImageUseCaseImpl @Inject constructor(

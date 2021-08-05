@@ -1,8 +1,8 @@
 package br.com.denisferreira.whitelabelapp.domain.usecase
 
 import android.net.Uri
-import br.com.denisferreira.whitelabelapp.data.ProductRepository
 import br.com.denisferreira.whitelabelapp.domain.model.Product
+import br.com.denisferreira.whitelabelapp.domain.model.ProductRepository
 import java.util.*
 import javax.inject.Inject
 
