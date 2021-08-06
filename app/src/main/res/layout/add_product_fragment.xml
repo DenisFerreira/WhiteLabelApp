@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    tools:context=".ui.addproducts.AddProductFragment"
-    android:padding="@dimen/screen_padding">
+    android:padding="@dimen/screen_padding"
+    tools:context=".ui.addproducts.AddProductFragment">
 
 
     <ImageView
@@ -13,13 +13,13 @@
         android:layout_width="140dp"
         android:layout_height="148dp"
         android:background="@drawable/background_product_image"
+        android:contentDescription="@string/product_image"
         android:padding="16dp"
         android:scaleType="centerCrop"
+        android:src="@drawable/ic_add_a_photo"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:src="@drawable/ic_add_a_photo"
-        android:contentDescription="@string/product_image" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/input_layout_description"
@@ -36,7 +36,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textCapSentences"
-            android:maxLines="1"/>
+            android:maxLines="1" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -54,7 +54,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="numberDecimal"
-            android:maxLines="1"/>
+            android:maxLines="1" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button

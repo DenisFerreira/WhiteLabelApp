@@ -24,10 +24,10 @@
         android:layout_marginTop="8dp"
         android:textAlignment="center"
         android:textAllCaps="true"
-        tools:text="Bicliceta BTT ST JISJIS AMarelo turbo"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/image_product" />
+        app:layout_constraintTop_toBottomOf="@+id/image_product"
+        tools:text="Bicliceta BTT ST JISJIS AMarelo turbo" />
 
     <TextView
         android:id="@+id/text_price"
@@ -36,9 +36,9 @@
         android:layout_marginTop="4dp"
         android:textAlignment="center"
         android:textAllCaps="true"
-        tools:text="R$ 1500,00"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_description" />
+        app:layout_constraintTop_toBottomOf="@+id/text_description"
+        tools:text="R$ 1500,00" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

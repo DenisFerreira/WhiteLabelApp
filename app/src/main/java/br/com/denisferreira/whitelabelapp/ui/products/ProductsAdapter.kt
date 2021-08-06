@@ -10,7 +10,7 @@ import br.com.denisferreira.whitelabelapp.domain.model.Product
 import br.com.denisferreira.whitelabelapp.util.toCurrency
 import com.bumptech.glide.Glide
 
-class ProductsAdapter : ListAdapter<Product, ProductsAdapter.ProductViewHolder>(DIFF_CALLBACK){
+class ProductsAdapter : ListAdapter<Product, ProductsAdapter.ProductViewHolder>(DIFF_CALLBACK) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProductViewHolder {
         return ProductViewHolder.create(parent)
@@ -47,7 +47,7 @@ class ProductsAdapter : ListAdapter<Product, ProductsAdapter.ProductViewHolder>(
     }
 
     companion object {
-        private val DIFF_CALLBACK = object: DiffUtil.ItemCallback<Product>(){
+        private val DIFF_CALLBACK = object : DiffUtil.ItemCallback<Product>() {
             override fun areItemsTheSame(oldItem: Product, newItem: Product): Boolean {
                 return oldItem.id == newItem.id
             }

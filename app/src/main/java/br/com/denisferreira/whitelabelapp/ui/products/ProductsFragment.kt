@@ -10,7 +10,7 @@ import br.com.denisferreira.whitelabelapp.databinding.FragmentProductsBinding
 class ProductsFragment : Fragment() {
 
 
-    private lateinit var binding : FragmentProductsBinding
+    private lateinit var binding: FragmentProductsBinding
 
     override fun onCreateView(
         inflater: LayoutInflater,

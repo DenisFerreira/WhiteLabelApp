@@ -11,8 +11,10 @@ import dagger.hilt.android.components.ViewModelComponent
 interface DomainModule {
     @Binds
     fun bindCreateProductUseCase(useCaseImpl: CreateProductUseCaseImpl): CreateProductUseCase
+
     @Binds
     fun bindGetProductsUseCase(useCaseImpl: GetProductsUseCaseImpl): GetProductsUseCase
+
     @Binds
     fun bindUploadProductImageUseCase(useCaseImpl: UploadProductImageUseCaseImpl): UploadProductImageUseCase
 }
