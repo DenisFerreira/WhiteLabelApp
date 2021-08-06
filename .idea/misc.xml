@@ -3,8 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/deferreira/AndroidStudioProjects/WhiteLabelApp/app/src/main/res/drawable/background_product_item.xml" value="0.2890625" />
         <entry key="..\:/Users/deferreira/AndroidStudioProjects/WhiteLabelApp/app/src/main/res/layout/add_product_fragment.xml" value="0.1" />
-        <entry key="..\:/Users/deferreira/AndroidStudioProjects/WhiteLabelApp/app/src/main/res/layout/fragment_products.xml" value="0.14270833333333333" />
+        <entry key="..\:/Users/deferreira/AndroidStudioProjects/WhiteLabelApp/app/src/main/res/layout/fragment_products.xml" value="0.25" />
+        <entry key="..\:/Users/deferreira/AndroidStudioProjects/WhiteLabelApp/app/src/main/res/layout/item_product.xml" value="0.25905797101449274" />
       </map>
     </option>
   </component>

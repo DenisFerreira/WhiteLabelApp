@@ -1,4 +1,4 @@
-package br.com.denisferreira.whitelabelapp.ui.products
+package br.com.denisferreira.whitelabelapp.ui.addproducts
 
 import android.net.Uri
 import android.util.Log

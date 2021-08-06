@@ -1,4 +1,4 @@
-package br.com.denisferreira.whitelabelapp.ui.products
+package br.com.denisferreira.whitelabelapp.ui.addproducts
 
 import android.net.Uri
 import android.os.Bundle
@@ -7,7 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.ViewModelProvider
 import br.com.denisferreira.whitelabelapp.databinding.AddProductFragmentBinding
 import br.com.denisferreira.whitelabelapp.util.CurrencyTextWatcher
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
