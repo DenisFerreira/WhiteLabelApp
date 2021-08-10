@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.viewModels
 import br.com.denisferreira.whitelabelapp.databinding.AddProductFragmentBinding
@@ -51,6 +52,9 @@ class AddProductFragment : BottomSheetDialogFragment() {
         }
         viewModel.priceFieldErrorResId.observe(viewLifecycleOwner) {
             binding.inputLayoutPrice.setError(it)
+        }
+        viewModel.showErrorMessage.observe(viewLifecycleOwner) {
+            Toast.makeText(context, it, Toast.LENGTH_SHORT).show()
         }
     }
 

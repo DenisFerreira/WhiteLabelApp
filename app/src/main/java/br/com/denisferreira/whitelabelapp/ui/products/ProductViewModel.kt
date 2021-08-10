@@ -15,6 +15,7 @@ import javax.inject.Inject
 class ProductViewModel @Inject constructor(private val getProductsUseCase: GetProductsUseCase) :
     ViewModel() {
 
+    val showErrorMessage = MutableLiveData<String>()
     private val _productsData = MutableLiveData<List<Product>>()
     val productData: LiveData<List<Product>> = _productsData
 
@@ -24,6 +25,7 @@ class ProductViewModel @Inject constructor(private val getProductsUseCase: GetPr
             _productsData.postValue(products)
         } catch (e: Exception) {
             Log.d("ProductViewModel", e.toString())
+            showErrorMessage.postValue(e.toString())
         }
     }
 }

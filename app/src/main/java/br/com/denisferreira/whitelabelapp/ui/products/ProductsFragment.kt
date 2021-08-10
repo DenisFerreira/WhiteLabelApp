@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
@@ -44,6 +45,9 @@ class ProductsFragment : Fragment() {
     private fun observeVMEvents() {
         viewModel.productData.observe(viewLifecycleOwner) { products ->
             productsAdapter.submitList(products)
+        }
+        viewModel.showErrorMessage.observe(viewLifecycleOwner) {
+            Toast.makeText(context, it, Toast.LENGTH_SHORT).show()
         }
     }
 

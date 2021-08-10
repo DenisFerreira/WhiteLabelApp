@@ -32,6 +32,8 @@ class AddProductViewModel @Inject constructor(
     private val _priceFieldErrorResId = MutableLiveData<Int?>()
     val priceFieldErrorResId: LiveData<Int?> = _priceFieldErrorResId
 
+    val showErrorMessage = MutableLiveData<String>()
+
     fun createProduct(description: String, price: String, imageUri: Uri?) = viewModelScope.launch {
         isFormValid = true
 
@@ -43,8 +45,9 @@ class AddProductViewModel @Inject constructor(
             try {
                 val product = createProductUseCase(description, price.fromCurrency(), imageUri!!)
             } catch (e: Exception) {
-                //TODO: Tratar com live data a exceção para ser exibida ao usuário
                 Log.d("CreateProduct", e.toString())
+
+                showErrorMessage.postValue(e.toString())
             }
         }
     }
