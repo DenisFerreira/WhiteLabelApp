@@ -8,6 +8,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import br.com.denisferreira.whitelabelapp.databinding.FragmentProductsBinding
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -32,6 +33,7 @@ class ProductsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         setRecyclerView()
         observeVMEvents()
+        setListener()
         viewModel.getProducts()
     }
 
@@ -49,7 +51,15 @@ class ProductsFragment : Fragment() {
         viewModel.showErrorMessage.observe(viewLifecycleOwner) {
             Toast.makeText(context, it, Toast.LENGTH_SHORT).show()
         }
+        viewModel.addProductVisibility.observe(viewLifecycleOwner) {    visibility ->
+            binding.fabAddProduct.visibility = visibility
+        }
     }
 
+    private fun setListener() {
+        binding.fabAddProduct.setOnClickListener {
+            findNavController().navigate(ProductsFragmentDirections.actionProductsFragmentToAddProductFragment())
+        }
+    }
 
 }
