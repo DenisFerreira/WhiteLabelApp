@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import br.com.denisferreira.whitelabelapp.databinding.AddProductFragmentBinding
 import br.com.denisferreira.whitelabelapp.util.CurrencyTextWatcher
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
@@ -32,7 +33,7 @@ class AddProductFragment : BottomSheetDialogFragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = AddProductFragmentBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -56,6 +57,17 @@ class AddProductFragment : BottomSheetDialogFragment() {
         viewModel.showErrorMessage.observe(viewLifecycleOwner) {
             Toast.makeText(context, it, Toast.LENGTH_SHORT).show()
         }
+        viewModel.addedProduct.observe(viewLifecycleOwner) { product ->
+            if (product != null) {
+                Toast.makeText(
+                    context,
+                    "${product.description} added with success",
+                    Toast.LENGTH_SHORT
+                ).show()
+                findNavController().navigateUp()
+            }
+
+        }
     }
 
     private fun TextInputLayout.setError(stringResId: Int?) {
@@ -71,7 +83,6 @@ class AddProductFragment : BottomSheetDialogFragment() {
         binding.buttonAddProduct.setOnClickListener {
             val description = binding.inputDescription.text.toString()
             val price = binding.inputPrice.text.toString()
-
             viewModel.createProduct(description, price, imageUri)
         }
 
