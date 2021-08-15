@@ -35,8 +35,8 @@ class AddProductViewModel @Inject constructor(
 
     val showErrorMessage = MutableLiveData<String>()
 
-    private val _addedProduct = MutableLiveData<Product?>()
-    val addedProduct: LiveData<Product?> = _addedProduct
+    private val _productCreated = MutableLiveData<Product?>()
+    val productCreated: LiveData<Product?> = _productCreated
 
     fun createProduct(description: String, price: String, imageUri: Uri?) = viewModelScope.launch {
         isFormValid = true
@@ -48,7 +48,7 @@ class AddProductViewModel @Inject constructor(
         if (isFormValid) {
             try {
                 val product = createProductUseCase(description, price.fromCurrency(), imageUri!!)
-                _addedProduct.postValue(product)
+                _productCreated.postValue(product)
             } catch (e: Exception) {
                 Log.d("CreateProduct", e.toString())
                 showErrorMessage.postValue(e.toString())

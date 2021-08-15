@@ -11,6 +11,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import br.com.denisferreira.whitelabelapp.databinding.AddProductFragmentBinding
 import br.com.denisferreira.whitelabelapp.util.CurrencyTextWatcher
+import br.com.denisferreira.whitelabelapp.util.PRODUCT_KEY
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.google.android.material.textfield.TextInputLayout
 import dagger.hilt.android.AndroidEntryPoint
@@ -57,14 +58,17 @@ class AddProductFragment : BottomSheetDialogFragment() {
         viewModel.showErrorMessage.observe(viewLifecycleOwner) {
             Toast.makeText(context, it, Toast.LENGTH_SHORT).show()
         }
-        viewModel.addedProduct.observe(viewLifecycleOwner) { product ->
+        viewModel.productCreated.observe(viewLifecycleOwner) { product ->
             if (product != null) {
                 Toast.makeText(
                     context,
                     "${product.description} added with success",
                     Toast.LENGTH_SHORT
                 ).show()
-                findNavController().navigateUp()
+                findNavController().run {
+                    previousBackStackEntry?.savedStateHandle?.set(PRODUCT_KEY, product)
+                    popBackStack()
+                }
             }
 
         }
