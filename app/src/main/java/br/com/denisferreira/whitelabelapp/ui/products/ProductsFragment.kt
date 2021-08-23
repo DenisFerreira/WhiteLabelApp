@@ -40,7 +40,7 @@ class ProductsFragment : Fragment() {
         setListener()
         observeNavBackStack()
 
-        viewModel.getProducts()
+        getProducts()
     }
 
     private fun observeNavBackStack() {
@@ -77,25 +77,37 @@ class ProductsFragment : Fragment() {
     }
 
     private fun observeVMEvents() {
-        viewModel.productData.observe(viewLifecycleOwner) { products ->
-            productsAdapter.submitList(products)
+        with(viewModel) {
+            productData.observe(viewLifecycleOwner) { products ->
+                productsAdapter.submitList(products)
+            }
+            showErrorMessage.observe(viewLifecycleOwner) {
+                Toast.makeText(context, it, Toast.LENGTH_SHORT).show()
+            }
+            addProductVisibility.observe(viewLifecycleOwner) { visibility ->
+                binding.fabAddProduct.visibility = visibility
+            }
         }
-        viewModel.showErrorMessage.observe(viewLifecycleOwner) {
-            Toast.makeText(context, it, Toast.LENGTH_SHORT).show()
-        }
-        viewModel.addProductVisibility.observe(viewLifecycleOwner) {    visibility ->
-            binding.fabAddProduct.visibility = visibility
-        }
+
+
     }
 
     private fun setListener() {
-        binding.fabAddProduct.setOnClickListener {
-            findNavController().navigate(ProductsFragmentDirections.actionProductsFragmentToAddProductFragment())
+        with(binding) {
+            fabAddProduct.setOnClickListener {
+                findNavController().navigate(ProductsFragmentDirections.actionProductsFragmentToAddProductFragment())
+            }
+
+            swipeProducts.setOnRefreshListener {
+                getProducts()
+            }
         }
-        binding.swipeProducts.setOnRefreshListener {
-            viewModel.getProducts()
-            binding.swipeProducts.isRefreshing = false
-        }
+    }
+
+    private fun getProducts() {
+        binding.swipeProducts.isRefreshing = true
+        viewModel.getProducts()
+        binding.swipeProducts.isRefreshing = false
     }
 
 }
