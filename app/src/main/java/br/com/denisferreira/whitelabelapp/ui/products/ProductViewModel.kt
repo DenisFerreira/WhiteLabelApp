@@ -7,7 +7,9 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import br.com.denisferreira.whitelabelapp.config.Config
 import br.com.denisferreira.whitelabelapp.domain.model.Product
+import br.com.denisferreira.whitelabelapp.domain.usecase.AddProductToCartUseCase
 import br.com.denisferreira.whitelabelapp.domain.usecase.GetProductsUseCase
+import br.com.denisferreira.whitelabelapp.domain.usecase.RemoveProductFromCartUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -15,7 +17,9 @@ import javax.inject.Inject
 @HiltViewModel
 class ProductViewModel @Inject constructor(
     private val getProductsUseCase: GetProductsUseCase,
-    private val config: Config
+    private val addProductToCartUseCase: AddProductToCartUseCase,
+    private val removeProductFromCartUseCase: RemoveProductFromCartUseCase,
+    config: Config
 ) :
     ViewModel() {
 
@@ -33,6 +37,18 @@ class ProductViewModel @Inject constructor(
         } catch (e: Exception) {
             Log.d("ProductViewModel", e.toString())
             showErrorMessage.postValue(e.toString())
+        }
+    }
+
+    fun addProductToCart(product: Product) {
+        viewModelScope.launch {
+            addProductToCartUseCase(product)
+        }
+    }
+
+    fun removeProductFromCart(product: Product) {
+        viewModelScope.launch {
+            removeProductFromCartUseCase(product)
         }
     }
 }

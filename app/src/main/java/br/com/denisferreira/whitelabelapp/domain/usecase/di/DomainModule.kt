@@ -17,4 +17,13 @@ interface DomainModule {
 
     @Binds
     fun bindUploadProductImageUseCase(useCaseImpl: UploadProductImageUseCaseImpl): UploadProductImageUseCase
+
+    @Binds
+    fun bindGetShoppingCartUseCase(useCaseImpl: GetShoppingCartUseCaseImpl): GetShoppingCartUseCase
+
+    @Binds
+    fun bindAddProductToCartUseCase(useCaseImpl: AddProductToCartUseCaseImpl): AddProductToCartUseCase
+
+    @Binds
+    fun bindRemoveProductToCartUseCase(useCaseImpl: RemoveProductFromCartUseCaseImpl): RemoveProductFromCartUseCase
 }

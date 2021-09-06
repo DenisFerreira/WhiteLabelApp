@@ -17,10 +17,10 @@ import br.com.denisferreira.whitelabelapp.util.PRODUCT_KEY
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class ProductsFragment : Fragment() {
+class ProductsFragment : Fragment(), ProductsAdapter.ManageCartListener {
 
     private lateinit var binding: FragmentProductsBinding
-    private val productsAdapter = ProductsAdapter()
+    private val productsAdapter = ProductsAdapter(this)
     private val viewModel: ProductViewModel by viewModels()
 
     override fun onCreateView(
@@ -108,6 +108,14 @@ class ProductsFragment : Fragment() {
         binding.swipeProducts.isRefreshing = true
         viewModel.getProducts()
         binding.swipeProducts.isRefreshing = false
+    }
+
+    override fun addProductToCart(product: Product) {
+        viewModel.addProductToCart(product)
+    }
+
+    override fun removeProductFromCart(product: Product) {
+        viewModel.removeProductFromCart(product)
     }
 
 }

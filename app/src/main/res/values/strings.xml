@@ -10,4 +10,7 @@
     <string name="add_product_field_error">Mandatory field</string>
     <string name="add_product_button_add_product">Add</string>
     <string name="product_image">product image</string>
+    <string name="cart">Cart</string>
+    <string name="buy">Comprar</string>
+    <string name="remove">Remover</string>
 </resources>

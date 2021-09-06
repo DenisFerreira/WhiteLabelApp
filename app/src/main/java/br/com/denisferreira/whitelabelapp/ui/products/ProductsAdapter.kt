@@ -1,6 +1,7 @@
 package br.com.denisferreira.whitelabelapp.ui.products
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
@@ -10,10 +11,11 @@ import br.com.denisferreira.whitelabelapp.domain.model.Product
 import br.com.denisferreira.whitelabelapp.util.toCurrency
 import com.bumptech.glide.Glide
 
-class ProductsAdapter : ListAdapter<Product, ProductsAdapter.ProductViewHolder>(DIFF_CALLBACK) {
+class ProductsAdapter(private val listener: ManageCartListener) :
+    ListAdapter<Product, ProductsAdapter.ProductViewHolder>(DIFF_CALLBACK) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProductViewHolder {
-        return ProductViewHolder.create(parent)
+        return ProductViewHolder.create(parent, listener)
     }
 
     override fun onBindViewHolder(holder: ProductViewHolder, position: Int) {
@@ -22,7 +24,8 @@ class ProductsAdapter : ListAdapter<Product, ProductsAdapter.ProductViewHolder>(
     }
 
     class ProductViewHolder(
-        private val itemBinding: ItemProductBinding
+        private val itemBinding: ItemProductBinding,
+        private val listener: ManageCartListener
     ) : RecyclerView.ViewHolder(itemBinding.root) {
 
         fun bind(product: Product) {
@@ -31,17 +34,28 @@ class ProductsAdapter : ListAdapter<Product, ProductsAdapter.ProductViewHolder>(
                     .load(product.imageUrl)
                     .fitCenter()
                     .into(imageProduct)
-
+                imageProduct.contentDescription = product.description
                 textDescription.text = product.description
                 textPrice.text = product.price.toCurrency()
+
+                buyProductButton.setOnClickListener {
+                    listener.addProductToCart(product)
+                    buyProductButton.visibility = View.GONE
+                    removeProductButton.visibility = View.VISIBLE
+                }
+                removeProductButton.setOnClickListener {
+                    listener.removeProductFromCart(product)
+                    buyProductButton.visibility = View.VISIBLE
+                    removeProductButton.visibility = View.GONE
+                }
             }
         }
 
         companion object {
-            fun create(parent: ViewGroup): ProductViewHolder {
+            fun create(parent: ViewGroup, listener: ManageCartListener): ProductViewHolder {
                 val itemBinding =
                     ItemProductBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-                return ProductViewHolder(itemBinding)
+                return ProductViewHolder(itemBinding, listener)
             }
         }
     }
@@ -59,4 +73,8 @@ class ProductsAdapter : ListAdapter<Product, ProductsAdapter.ProductViewHolder>(
     }
 
 
+    interface ManageCartListener {
+        fun addProductToCart(product: Product)
+        fun removeProductFromCart(product: Product)
+    }
 }
