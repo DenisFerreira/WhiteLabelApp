@@ -16,19 +16,19 @@ class ShoppingCartRepositoryImpl @Inject constructor() : ShoppingCartRepository 
         return _shoppingCart
     }
 
-    override suspend fun addProductToCart(product: Product): ShoppingCart {
-        products.add(product)
+    override suspend fun addProductToCart(product: Product): Boolean {
+        val result = products.add(product)
         Log.i("CARTREPO", "add product $product to cart")
         val shoppingCart = ShoppingCart(0, products)
         _shoppingCart.postValue(shoppingCart)
-        return shoppingCart
+        return result
     }
 
-    override suspend fun removeProductToCart(product: Product): ShoppingCart {
-        products.remove(product)
+    override suspend fun removeProductToCart(product: Product): Boolean {
+        val result = products.remove(product)
         Log.i("CARTREPO", "remove Product $product to cart")
         val shoppingCart = ShoppingCart(0, products)
         _shoppingCart.postValue(shoppingCart)
-        return shoppingCart
+        return result
     }
 }

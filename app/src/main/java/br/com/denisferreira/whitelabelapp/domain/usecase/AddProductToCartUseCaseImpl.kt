@@ -7,7 +7,7 @@ import javax.inject.Inject
 
 class AddProductToCartUseCaseImpl @Inject constructor(private val repository: ShoppingCartRepository) :
     AddProductToCartUseCase {
-    override suspend fun invoke(product: Product): ShoppingCart {
+    override suspend fun invoke(product: Product): Boolean {
         return repository.addProductToCart(product)
     }
 }

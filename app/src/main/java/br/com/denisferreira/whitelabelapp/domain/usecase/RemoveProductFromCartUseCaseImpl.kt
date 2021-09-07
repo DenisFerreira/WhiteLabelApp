@@ -7,7 +7,7 @@ import javax.inject.Inject
 
 class RemoveProductFromCartUseCaseImpl @Inject constructor(private val repository: ShoppingCartRepository) :
     RemoveProductFromCartUseCase {
-    override suspend fun invoke(product: Product): ShoppingCart {
+    override suspend fun invoke(product: Product): Boolean {
         return repository.removeProductToCart(product)
     }
 }
